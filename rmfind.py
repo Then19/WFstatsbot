@@ -39,6 +39,8 @@ async def findrm(username):
             result = f'\U00002747WIN  '
         elif rmmode == 'Мясорубка':
             result = f'\U00002b50MEAT'
+        elif rmmode == 'Выживание':
+            result == f'\U00002b50MEAT'
         else:
             result = f'\U0000274cLOSE'
         results.append(f"<b>{result}</b>  {playclass}  У/С: <b>{rmkd}</b> - <em>{rmmode}:{rmmap}</em> \n")
