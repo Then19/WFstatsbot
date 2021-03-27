@@ -1,7 +1,10 @@
 import requests
 import fake_useragent
+from PyQt5.QtWidgets import QApplication
 from bs4 import BeautifulSoup
 from config import cookie
+import sys
+import time
 
 
 async def findrm(username):
@@ -95,3 +98,22 @@ async def statsfind(finduser):
         stats.append("Игрок не найден или его статистика скрыта")
 
     return stats
+
+def full_stats():
+    link = f"https://wfts.su/match_page?id=3719daafb549dabc_16229cba"
+    user = fake_useragent.UserAgent().random
+
+    header = {
+        'user-agent': user,
+        'cookie': cookie
+    }
+    responce = requests.get(link, headers=header).text
+    soup = BeautifulSoup(responce, 'lxml')
+    result = soup.find(class_="hmatch-statistics")
+
+
+
+    return result.contents
+
+print(full_stats())
+
